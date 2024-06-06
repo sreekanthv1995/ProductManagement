@@ -1,7 +1,7 @@
 package com.product_management.Management.filter;
 
 import com.product_management.Management.service.jwt.JwtService;
-import com.product_management.Management.service.userService.UserDetailsService;
+import com.product_management.Management.service.authService.customUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    private final UserDetailsService userDetailsService;
+    private final customUserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,

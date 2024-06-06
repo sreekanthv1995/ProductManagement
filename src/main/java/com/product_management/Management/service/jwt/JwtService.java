@@ -1,6 +1,5 @@
 package com.product_management.Management.service.jwt;
 
-import com.product_management.Management.entity.Merchant;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
 

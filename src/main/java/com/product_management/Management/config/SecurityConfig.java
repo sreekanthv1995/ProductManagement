@@ -1,7 +1,7 @@
 package com.product_management.Management.config;
 
 import com.product_management.Management.filter.JwtAuthenticationFilter;
-import com.product_management.Management.service.userService.UserDetailsService;
+import com.product_management.Management.service.authService.customUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final UserDetailsService userDetailsService;
+    private final customUserDetailsService userDetailsService;
 
 
     @Bean
@@ -31,10 +31,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         req -> req.requestMatchers(
-                                "/login/**",
-                                "/register/**")
+                                "/api/v1/auth/login/**",
+                                "api/v1/auth/register/**")
                                 .permitAll()
-                                .requestMatchers("/admin/**")
+                                .requestMatchers("/api/v1/admin/**")
                                 .hasAuthority("ADMIN")
                                 .anyRequest()
                                 .authenticated())
