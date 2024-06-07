@@ -3,6 +3,8 @@ package com.product_management.Management.entity;
 import com.product_management.Management.dto.AdminDto;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -10,7 +12,6 @@ import lombok.*;
 @Builder
 public class AuthResponse {
 
-//    private Merchant merchant;
     private String email;
     private Role role;
     private String token;

@@ -1,9 +1,16 @@
 package com.product_management.Management.service.merchant;
 
-import com.product_management.Management.dto.MerchantDto;
+import com.product_management.Management.dto.ProductDto;
+import com.product_management.Management.entity.Product;
+
+import java.util.List;
+import java.util.UUID;
 
 public interface MerchantService {
 
-    void createNewMerchant(MerchantDto merchantDto);
+
+    boolean addProduct(ProductDto productDto, String email);
+
+    List<Product> getAllProducts(UUID merchantId);
 
 }

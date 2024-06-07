@@ -1,5 +1,6 @@
 package com.product_management.Management.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = "merchant")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -27,6 +28,13 @@ public class Merchant implements UserDetails {
     private String ownerName;
     private String shopName;
     private String category;
+    private Long phoneNumber;
+    private boolean active;
+
+    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Product> product;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

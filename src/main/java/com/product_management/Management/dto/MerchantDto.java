@@ -11,5 +11,6 @@ public class MerchantDto {
     private String password;
     private String ownerName;
     private String shopName;
+    private Long phoneNumber;
     private String category;
 }

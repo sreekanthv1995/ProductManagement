@@ -7,6 +7,7 @@ import com.product_management.Management.entity.Merchant;
 import com.product_management.Management.repository.AdminRepository;
 import com.product_management.Management.repository.MerchantRepository;
 import com.product_management.Management.service.jwt.JwtService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -30,6 +31,7 @@ public class AuthServiceImp implements AuthService{
                     new UsernamePasswordAuthenticationToken(
                             loginDto.getEmail(),
                             loginDto.getPassword()));
+
             Optional<Admin> admin = adminRepository.findByEmail(loginDto.getEmail());
             Optional<Merchant> merchant = merchantRepository.findByEmail(loginDto.getEmail());
             if (admin.isPresent()) {
@@ -48,9 +50,9 @@ public class AuthServiceImp implements AuthService{
                         .token(token)
                         .build();
             }
-            throw new BadCredentialsException("Invalid Credentials");
+            throw new EntityNotFoundException("not found");
         }catch (BadCredentialsException e){
-            throw new RuntimeException("invalid email or password");
+            throw new BadCredentialsException("invalid email or password");
         }
     }
 }
