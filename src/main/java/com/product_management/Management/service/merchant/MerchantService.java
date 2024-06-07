@@ -13,4 +13,5 @@ public interface MerchantService {
 
     List<Product> getAllProducts(UUID merchantId);
 
+    boolean deleteProduct(Long id);
 }

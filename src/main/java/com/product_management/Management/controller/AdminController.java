@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,5 +38,11 @@ public class AdminController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Merchant>> listAllMerchant(){
         return ResponseEntity.ok(adminService.getAllMerchant());
+    }
+
+    @DeleteMapping("/delete/merchant")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<?>deleteMerchant(@RequestParam UUID merchantId){
+        return ResponseEntity.ok(adminService.deleteMerchant(merchantId));
     }
 }

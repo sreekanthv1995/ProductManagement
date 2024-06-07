@@ -49,7 +49,12 @@ public class MerchantServiceImp implements MerchantService{
 
     @Override
     public List<Product> getAllProducts(UUID merchantId) {
-//        Merchant merchant = merchantRepository.findById(merchantId).orElseThrow(()->new EntityNotFoundException("Not found"));
         return productRepository.findByMerchantId(merchantId);
+    }
+
+    @Override
+    public boolean deleteProduct(Long id) {
+        productRepository.deleteById(id);
+        return true;
     }
 }

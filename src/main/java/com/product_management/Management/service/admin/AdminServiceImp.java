@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImp implements AdminService {
@@ -41,5 +43,11 @@ public class AdminServiceImp implements AdminService {
     @Override
     public List<Merchant> getAllMerchant() {
         return merchantRepository.findAll();
+    }
+
+    @Override
+    public boolean deleteMerchant(UUID merchantId) {
+        merchantRepository.deleteById(merchantId);
+        return true;
     }
 }

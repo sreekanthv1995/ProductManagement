@@ -29,4 +29,9 @@ public class MerchantController {
     public ResponseEntity<List<Product>> listAllProductByMerchant(@RequestParam UUID merchantId) {
         return ResponseEntity.ok(merchantService.getAllProducts(merchantId));
     }
+
+    @DeleteMapping("/delete/product")
+    public ResponseEntity<?>deleteProduct(@RequestParam Long id){
+        return ResponseEntity.ok(merchantService.deleteProduct(id));
+    }
 }
